@@ -1,0 +1,6 @@
+[cRIO Controller]
+cRIO Controller = "10.0.0.2"
+
+[My Computer]
+My Computer = "192.168.0.6"
+

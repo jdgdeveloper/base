@@ -1,0 +1,25 @@
+The application rTracker.py generates an HTML document that can be viewed/printed from a browser.  The intent is to be able to keep track of resources.  The application will process a directory containing image files (file.<jpg|JPG>) and a description of the image file named (file.txt).  Each image file can have an associated file which contains necessary information describing the image file.
+
+If a file does not exist, the image will be presented without any associated information.
+
+The content of the description txt file is as following blocks:
+Image Description File: <base filename same as image, but "txt" extension>
+1) <detailed description, etc>
+2) <estimated cost:"$" > cost (blank with no owner means liquidate)
+3) <owner:"@" > name (blank means no one claims ownership, double "@@" means BOTH)
+4) <tracking number(s):"#" > track number (must have owner specified, each tracking number is in own row)
+
+Value			Owner		Description
+-----------------------------------------------------------------------------------------------
+-			-		Resource of no value, LIQUIDATE
+-----------------------------------------------------------------------------------------------
+-			@<name>,@@	Resource holds no value, allocate as specified
+-----------------------------------------------------------------------------------------------
+$<amount>		-		No one wants resource, LIQUIDATE
+-----------------------------------------------------------------------------------------------
+$<amount>		@<name>,@@	Resource holds value, allocate as specified
+-----------------------------------------------------------------------------------------------
+$$			@<name>,@@	Resource holds sentimental value, allocate as specified
+-----------------------------------------------------------------------------------------------
+
+

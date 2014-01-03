@@ -1,0 +1,53 @@
+
+import sys,os
+import time
+from Tkinter import *
+from ScrolledText import ScrolledText
+
+class LogViewer(Frame):
+  def __init__(self,parent,filename):
+    Frame.__init__(self,parent)
+    self.filename=filename
+    self.file=open(filename,'r')
+    self.text=ScrolledText(parent)
+    self.text.pack(fill=BOTH)
+    data=self.file.read()
+    self.size=len(data)
+    self.text.insert(END,data)
+    self.after(100,self.poll)
+
+  def poll(self):
+    if os.path.getsize(self.filename)>self.size:
+      data=self.file.read()
+      self.size=self.size+len(data)
+      self.text.insert(END,data)
+
+if __name__ == "__main__":
+  root=Tk()
+  viewer=LogViewer(root,sys.argv[1])
+  viewer.mainloop()
+
+xxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx
+yyyyyyyyyyyyyyyyyyyy
+yyyyyyyyyyyyyyyyyyyyy
+0123456789
+1234567890
+abcd
+012345
+1
+2
+3
+1111111111111111111111111111111
+
+
+
+a
+b
+c
+123456
+234567
+3456789876543
+a
+bb
+ccc
